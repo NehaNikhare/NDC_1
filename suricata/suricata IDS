@@ -70,3 +70,46 @@ client:-
 		ping to the suricata machine (it will not ping)   -> successfully completed
 
 
+
+
+
+
+===============================================================================================
+==============================FAIL2BAN======================================================
+
+deb1 - sudo apt-get install -y python3-systemd fail2ban
+-ls -l /etc/fail2ban/jail.conf
+- sudo nano /etc/fail2ban/jail.conf
+[sshd]
+    backend= systemd
+     enabled = true 
+     port =22 
+     filter = sshd
+    maxretry = 3
+     bantime =3600
+    findtime =600
+
+save and exit 
+
+- sudo systemctl restart fail2ban 
+-sudo systemctl status fail2ban 
+- sudo fail2ban-client status 
+- sudo fail2ban-client status sshd
+-sudo iptables -L ( 3 DEFAULT CHAIN WILL DISPLAY )
+
+
+deb2 - ssh shuhari@192.168.80.130(fail2ban ip)
+       type wrong pass word 3 times  
+
+deb1 - sudo fail2ban-client status sshd 
+
+
+
+
+
+
+
+
+
+
+
