@@ -14,10 +14,15 @@ make openssl wget zlib1g-dev
 
 
 	##install the DAQ library###
+
 	
 	mkdir -p /usr/src/snort_src  -> make dir of snort_src
+      - sudo cp /tmp/daq-2.0.7.tar.gz  /usr/src/snort_src
+    -ls -l /usr/src/snort_src/
+  cd /usr/src/snort_src
+ sudo yar -zxf daq-2.0.7.tar.gz
+cd daq-2.0.7
 	
-	- extract the tar file of daq-2.0.7.tar.gz   in /tmp
 	
 	-sudo ./configure
 	
@@ -26,8 +31,13 @@ make openssl wget zlib1g-dev
 	- sudo make install 
 	
 	#### download the snort-2.9.tar.gz
-	
-		- in /usr/src/snort_src   ->>. extract the tar file in this folder
+	         cd /usr/src/snort_src
+                sudo cp /tmp/snort-2.9.20.tar.gz
+                sudo tar -zxf snort-2.9.20.tar.gz
+                cd snort-2.9.20
+                 ls -l /usr/include/tirpc
+
+		
 		
 		
 	sudo ln -s /usr/include/tirpc/netconfig.h /usr/include/ 
@@ -55,7 +65,8 @@ make openssl wget zlib1g-dev
 		- sudo ./configure
 		- sudo make 
 		- sudo make install
-		
+		sudo snort -V (optionAL)
+             sudo ldconfig (optional)
 	- sudo ldconfig -p  | grep tirpc
 	
 	- sudo ldconfig -V  -> version
